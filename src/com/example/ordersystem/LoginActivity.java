@@ -106,7 +106,7 @@ public class LoginActivity extends Activity{
 		user3.put("password","dji33");
 		
 		//关联对象
-		AVRelation<AVObject> relation =userFolder.getRelation("包含user");
+		AVRelation<AVObject> relation =userFolder.getRelation("包含USer");
 		relation.add(user1);
 		relation.add(user2);
 		relation.add(user3);
