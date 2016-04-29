@@ -23,17 +23,22 @@ import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.RequestMobileCodeCallback;
 import com.avos.avoscloud.LogUtil.log;
 import com.avos.avoscloud.SaveCallback;
+import com.example.ordersystem.constants.LeanCloudConf;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class LoginActivity extends Activity{
+public class LoginActivity extends Activity implements OnClickListener{
     private Button login_btn,cancle_btn;
     private TextView account_text,password_text;
     private EditText account_editext,password_editext;
@@ -41,29 +46,96 @@ public class LoginActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
-		inial();
-		AVOSCloud.initialize(this, "enGm9xuEOUQ7VhAhJy8B0DrR-gzGzoHsz", "ne6tHuAkWvzHbkW62f2Q76Dz");
+		initialView();
+		AVOSCloud.initialize(this,LeanCloudConf.APP_ID, LeanCloudConf.APP_Key);
 	    //跟踪统计应用 的打开情况
 		AVAnalytics.trackAppOpened(getIntent());
-	    AVObject testObject=new AVObject("TestObject");
-	    testObject.put("test", "hello world");
-	    testObject.saveInBackground();
 	    
 	}
 	
-	private void inial(){
+	private void initialView(){
 		login_btn=(Button)findViewById(R.id.login_btn);
 		cancle_btn=(Button)findViewById(R.id.cancel_btn);
 		account_editext=(EditText)findViewById(R.id.editAccount);
 		password_editext=(EditText)findViewById(R.id.editPassword);
 		account_text=(TextView)findViewById(R.id.account);
 		password_text=(TextView)findViewById(R.id.password);
-	
+	    login_btn.setOnClickListener(this);
+	    cancle_btn.setOnClickListener(this);
 	}
 	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		String account=account_editext.getText().toString();
+		String password=password_editext.getText().toString();
+		switch(v.getId()){
+		case R.id.login_btn:
+			loginByUsername(account, password);
+			break;
+		case R.id.cancel_btn:
+			//清空用户输入的内容
+			account_editext.setText("");
+			password_editext.setText("");
+			break;
+		
+		}
+	}
+	
+	//登录
+	private void loginByUsername(String account,String password){
+		AVUser user=new AVUser();
+		if(account.length()<1&&account.length()>20){
+			Toast.makeText(LoginActivity.this, "账号长度应为1-20位", Toast.LENGTH_SHORT).show();
+		}
+		else if(password.length()<6&&password.length()<16){
+			Toast.makeText(LoginActivity.this, "密码长度应为6-16位", Toast.LENGTH_SHORT).show();
+
+		}
+		else {
+		user.logInInBackground(account.trim(), password.trim(), new LogInCallback<AVUser>() {
+			
+			@Override
+			public void done(AVUser arg0, AVException arg1) {
+				// TODO Auto-generated method stub
+				if(arg1==null){
+					Log.i("tag", "登录成功");
+					Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+					startActivity(intent);
+				}else{
+					Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT);
+					Log.e("tag", "登录失败，请检查网络或其他");
+				}
+			}
+		});
+		}
+		
+	}
+	//菜单项
+		@Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+			// Inflate the menu; this adds items to the action bar if it is present.
+			getMenuInflater().inflate(R.menu.main, menu);
+			return true;
+		}
+	    
+		//相应菜单项被单击事件
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+			// Handle action bar item clicks here. The action bar will
+			// automatically handle clicks on the Home/Up button, so long
+			// as you specify a parent activity in AndroidManifest.xml.
+			int id = item.getItemId();
+			if (id == R.id.action_settings) {
+				return true;
+			}
+			return super.onOptionsItemSelected(item);
+		}
+	
+	/**
 	/**
 	 * 手机号一键登录
-	 */
+	
 	private void phoneNumberLogin(){
 		//1.调用发送验证码的接口
 		AVOSCloud.requestSMSCodeInBackground("13826473629", new RequestMobileCodeCallback() {
@@ -263,7 +335,7 @@ public class LoginActivity extends Activity{
 	}
 	/**
 	 * 原子操作：更新计数器，更新数组
-	 */
+	
 	//更新计数器
 	private void updateCounter(){
 		final AVObject user=AVObject.createWithoutData("User","sdsddsds");
@@ -286,7 +358,7 @@ public class LoginActivity extends Activity{
 		
 		
 	}
-	/*//更新数组
+	/更新数组
 	private void updateArray(){
 		//更新数组
 				Date getDateWithDateString(String dateString){
@@ -303,9 +375,9 @@ public class LoginActivity extends Activity{
 					todo.addUnique("reminders", Arrays.asList(reminder1,reminder2,reminder3));
 					todo.saveInBackground();
 				}													
-	}*/
+	}
     
-	//删除对象
+	删除对象
 	private void deleteObject(){
 		AVObject user=AVObject.createWithoutData("User","sdsddsds");
 	    user.deleteInBackground();
@@ -335,7 +407,7 @@ public class LoginActivity extends Activity{
 	//批量获取
 	fetchAll();
 	fetchAllInBackground();
-	 */
+	 
 	private void setObject(){
 		AVQuery<AVObject> query=new AVQuery<AVObject>("User");
 		query.findInBackground(new FindCallback<AVObject>() {
@@ -369,6 +441,7 @@ public class LoginActivity extends Activity{
 	
 	
 	
+	**/
 	
 	
 	
@@ -381,23 +454,6 @@ public class LoginActivity extends Activity{
 	
 	
 	
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+	
 }
