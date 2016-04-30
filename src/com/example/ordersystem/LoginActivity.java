@@ -1,28 +1,10 @@
 package com.example.ordersystem;
 
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import com.avos.avoscloud.AVAnalytics;
-import com.avos.avoscloud.AVCloudQueryResult;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVOSCloud;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.AVRelation;
-import com.avos.avoscloud.AVSaveOption;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.CloudQueryCallback;
-import com.avos.avoscloud.FindCallback;
-import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.LogInCallback;
-import com.avos.avoscloud.RequestMobileCodeCallback;
-import com.avos.avoscloud.LogUtil.log;
-import com.avos.avoscloud.SaveCallback;
 import com.example.ordersystem.constants.LeanCloudConf;
 
 import android.app.Activity;
@@ -35,13 +17,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.ordersystem.utils.util;;
 public class LoginActivity extends Activity implements OnClickListener{
-    private Button login_btn,cancle_btn;
-    private TextView account_text,password_text;
+    private Button login_btn,cancle_btn,register_btn;
     private EditText account_editext,password_editext;
+   util util=new util();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,51 +30,105 @@ public class LoginActivity extends Activity implements OnClickListener{
 		initialView();
 		AVOSCloud.initialize(this,LeanCloudConf.APP_ID, LeanCloudConf.APP_Key);
 	    //跟踪统计应用 的打开情况
-		AVAnalytics.trackAppOpened(getIntent());
+		//AVAnalytics.trackAppOpened(getIntent());
 	    
 	}
 	
 	private void initialView(){
 		login_btn=(Button)findViewById(R.id.login_btn);
 		cancle_btn=(Button)findViewById(R.id.cancel_btn);
+		register_btn=(Button)findViewById(R.id.register_btn);
 		account_editext=(EditText)findViewById(R.id.editAccount);
 		password_editext=(EditText)findViewById(R.id.editPassword);
-		account_text=(TextView)findViewById(R.id.account);
-		password_text=(TextView)findViewById(R.id.password);
 	    login_btn.setOnClickListener(this);
 	    cancle_btn.setOnClickListener(this);
+	    register_btn.setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		String account=account_editext.getText().toString();
-		String password=password_editext.getText().toString();
+		String account=account_editext.getText().toString();//获取用户输入的用户名
+		String password=password_editext.getText().toString();//获取输入的密码
+		
 		switch(v.getId()){
 		case R.id.login_btn:
-			loginByUsername(account, password);
+			
+			loginByEmail(account.trim(),password.trim());  //只能通过邮箱地址来登录，这样可以无须绑定邮箱即可发邮件找回密码
 			break;
 		case R.id.cancel_btn:
 			//清空用户输入的内容
 			account_editext.setText("");
 			password_editext.setText("");
 			break;
+		case R.id.register_btn:
+			Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+			startActivity(intent);
+			break;
+			default:
+				break;
+				
+			
+		
 		
 		}
 	}
 	
-	//登录
-	private void loginByUsername(String account,String password){
-		AVUser user=new AVUser();
-		if(account.length()<1&&account.length()>20){
-			Toast.makeText(LoginActivity.this, "账号长度应为1-20位", Toast.LENGTH_SHORT).show();
+	/*
+	 * 判断输入的是用户昵称还是电子邮件
+	 */
+	public boolean isUsernameOrEmail(String text){
+		if(text.contains("@")){
+			return false;
+		}else{
+		return true;
 		}
-		else if(password.length()<6&&password.length()<16){
+	}
+	/**
+	 * 通过电子邮箱登录
+	 */
+	private void loginByEmail(String email,String password){
+		//判断输入的电子邮箱是否符合要求
+		if(email.isEmpty()==true||util.isEmail(email)==false){
+			Log.i("tag", "邮箱不正确");
+			Toast.makeText(LoginActivity.this, "邮箱地址不正确", 3000).show();
+		}else if(password.length()<6||password.length()>16){
+			Toast.makeText(LoginActivity.this, "密码长度应为6-16位", 3000).show();
+			Log.i("tag", "密码不正确");
+		}
+		else {
+		AVUser.logInInBackground(email.trim(), password.trim(), new LogInCallback<AVUser>() {
+				@Override
+				public void done(AVUser arg0, AVException arg1) {
+					// TODO Auto-generated method stub
+					if(arg1==null){
+						Log.i("tag", "登录成功");
+						Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+						startActivity(intent);
+					}else{
+						Toast.makeText(LoginActivity.this, "邮箱地址不存在", Toast.LENGTH_SHORT).show();
+						Log.e("tag", arg1.toString());
+					}
+				}
+			});
+		}
+	}
+	/*
+	 * 利用用户名登录
+	 
+	private void loginByUsername(String account,String password){
+		
+		if(account.length()<1||account.length()>20){
+			Toast.makeText(LoginActivity.this, "账号长度应为1-20位", Toast.LENGTH_SHORT).show();
+		    Log.i("tag", "账号长度应为1-20位");
+		}
+		else if(password.length()<6||password.length()>16){
 			Toast.makeText(LoginActivity.this, "密码长度应为6-16位", Toast.LENGTH_SHORT).show();
 
 		}
 		else {
-		user.logInInBackground(account.trim(), password.trim(), new LogInCallback<AVUser>() {
+			AVUser user=new AVUser();
+		   user.logInInBackground(account.trim(), password.trim(), new LogInCallback<AVUser>() {
 			
 			@Override
 			public void done(AVUser arg0, AVException arg1) {
@@ -103,14 +138,19 @@ public class LoginActivity extends Activity implements OnClickListener{
 					Intent intent=new Intent(LoginActivity.this,MainActivity.class);
 					startActivity(intent);
 				}else{
-					Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT);
-					Log.e("tag", "登录失败，请检查网络或其他");
+					Toast.makeText(LoginActivity.this, "该用户未注册", Toast.LENGTH_SHORT);
+					//Log.e("tag", "登录失败，请检查网络或其他");
 				}
 			}
 		});
 		}
 		
 	}
+	
+	*/
+	
+	
+	
 	//菜单项
 		@Override
 		public boolean onCreateOptionsMenu(Menu menu) {
