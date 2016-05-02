@@ -19,8 +19,7 @@ public class HomeFragment extends Fragment{
 		    * attachToRoot:false，不返回父ViewGroup
 		    */
 		   View view=inflater.inflate(R.layout.fragment_home, container, false);
-		   TextView textview =(TextView)view.findViewById(R.id.textView1);
-		   textview.setText("这里是首页");
-		return super.onCreateView(inflater, container, savedInstanceState);
+		   
+		return view;
 	}
 }

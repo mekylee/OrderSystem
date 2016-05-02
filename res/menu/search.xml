@@ -1,12 +1,14 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.ordersystem.MainActivity" >
-   <item 
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- 添加Action View -->
+    <item 
         android:id="@+id/action_serach"
         android:title="@string/search"
         android:actionViewClass="android.widget.SearchView"
         android:showAsAction="always"
         >
+        
     </item>
-   
+    
+
 </menu>

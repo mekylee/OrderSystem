@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">OrderSystem</string>
+    <string name="app_name">快点餐</string>
     <string name="mine">我的</string>
     <string name="home">首页</string>
     <string name="shoppingcart">购物车</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
+    <string name="new_password">新密码</string>
+    <string name="sure">确定</string>
+    <string name="cancle">取消</string>
     <string name="forget_password">忘记密码？</string>
     <string name="reset_pasword">修改密码</string>
     <string name="username">账号</string>
     <string name="password">密码</string>
     <string name="confirm_password">确认密码</string>
-
+    <string name="search">搜索</string>
+    <string name="logout">退出登录</string>
+    <string name="myorder">我的订单</string>
+    <string name="mycontent">我的评价</string>
+    <string name="select_cusine">点菜</string>
+    <string name="commnet">评价</string>
+    <string name="select_all">全选</string>
+    <string name="per_price">单价</string>
+    <string name="number">数量</string>
+    <string name="total_price">总价</string>
+    <string name="delete">删除</string>
+    <string name="commit">提交</string>
+    <string name="status_order">订单状态</string>
+    <string name="order_detail">订单详情</string>
+    <string name="order_commited">订单已提交</string>
+    <string name="wait_for_confirm">请耐心等待餐厅确认</string>
+    <string name="wait_for_cusine">请耐心等待上菜</string>
+    <string name="cusine_completed">上菜完成</string>
+    <string name="order_completed">订单完成</string>
+    <string name="order_info">订单信息</string>
+    <string name="order_time">下单时间</string>
 </resources>

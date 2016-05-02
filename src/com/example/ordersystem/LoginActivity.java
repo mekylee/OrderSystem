@@ -6,27 +6,32 @@ import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.example.ordersystem.constants.LeanCloudConf;
+import com.example.ordersystem.customview.CleanableEditText;
+import com.example.ordersystem.customview.CleanableEditText.TextWatcherCallBack;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.ordersystem.utils.util;;
-public class LoginActivity extends Activity implements OnClickListener{
-    private Button login_btn,cancle_btn,register_btn;
-    private EditText account_editext,password_editext;
+public class LoginActivity extends Activity implements TextWatcherCallBack,OnClickListener{
+    private Button login_btn,register_btn,resetpassword_btn;
+    private CleanableEditText account_editext, password_editext;
    util util=new util();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_login);
 		initialView();
 		AVOSCloud.initialize(this,LeanCloudConf.APP_ID, LeanCloudConf.APP_Key);
 	    //跟踪统计应用 的打开情况
@@ -36,13 +41,13 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	private void initialView(){
 		login_btn=(Button)findViewById(R.id.login_btn);
-		cancle_btn=(Button)findViewById(R.id.cancel_btn);
 		register_btn=(Button)findViewById(R.id.register_btn);
-		account_editext=(EditText)findViewById(R.id.editAccount);
-		password_editext=(EditText)findViewById(R.id.editPassword);
+		resetpassword_btn=(Button)findViewById(R.id.resetpassword_btn);
+		account_editext=(CleanableEditText)findViewById(R.id.edit_account);
+		password_editext=(CleanableEditText)findViewById(R.id.edit_password);
 	    login_btn.setOnClickListener(this);
-	    cancle_btn.setOnClickListener(this);
 	    register_btn.setOnClickListener(this);
+	    resetpassword_btn.setOnClickListener(this);
 	}
 	
 	@Override
@@ -53,17 +58,17 @@ public class LoginActivity extends Activity implements OnClickListener{
 		
 		switch(v.getId()){
 		case R.id.login_btn:
-			
 			loginByEmail(account.trim(),password.trim());  //只能通过邮箱地址来登录，这样可以无须绑定邮箱即可发邮件找回密码
 			break;
-		case R.id.cancel_btn:
-			//清空用户输入的内容
-			account_editext.setText("");
-			password_editext.setText("");
+		case R.id.resetpassword_btn: 
+			Intent intent=new Intent(getApplicationContext(),ResetPassActivity.class);
+			startActivity(intent);
+			Log.i("tag", "跳转到找回密码页面");
 			break;
 		case R.id.register_btn:
-			Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
-			startActivity(intent);
+			Intent intent1=new Intent(LoginActivity.this,RegisterActivity.class);
+			startActivity(intent1);
+			Log.i("tag","跳转到注册页面");
 			break;
 			default:
 				break;
@@ -91,9 +96,9 @@ public class LoginActivity extends Activity implements OnClickListener{
 		//判断输入的电子邮箱是否符合要求
 		if(email.isEmpty()==true||util.isEmail(email)==false){
 			Log.i("tag", "邮箱不正确");
-			Toast.makeText(LoginActivity.this, "邮箱地址不正确", 3000).show();
+			Toast.makeText(LoginActivity.this, "邮箱地址不正确", 2000).show();
 		}else if(password.length()<6||password.length()>16){
-			Toast.makeText(LoginActivity.this, "密码长度应为6-16位", 3000).show();
+			Toast.makeText(LoginActivity.this, "密码长度应为6-16位", 2000).show();
 			Log.i("tag", "密码不正确");
 		}
 		else {
@@ -106,13 +111,21 @@ public class LoginActivity extends Activity implements OnClickListener{
 						Intent intent=new Intent(LoginActivity.this,MainActivity.class);
 						startActivity(intent);
 					}else{
-						Toast.makeText(LoginActivity.this, "邮箱地址不存在", Toast.LENGTH_SHORT).show();
+						Toast.makeText(LoginActivity.this, "邮箱地址不存在", 2000).show();
 						Log.e("tag", arg1.toString());
 					}
 				}
 			});
 		}
 	}
+
+	@Override
+	public void handleMoreTextChanged() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
 	/*
 	 * 利用用户名登录
 	 
@@ -151,26 +164,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	
 	
-	//菜单项
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			// Inflate the menu; this adds items to the action bar if it is present.
-			getMenuInflater().inflate(R.menu.main, menu);
-			return true;
-		}
-	    
-		//相应菜单项被单击事件
-		@Override
-		public boolean onOptionsItemSelected(MenuItem item) {
-			// Handle action bar item clicks here. The action bar will
-			// automatically handle clicks on the Home/Up button, so long
-			// as you specify a parent activity in AndroidManifest.xml.
-			int id = item.getItemId();
-			if (id == R.id.action_settings) {
-				return true;
-			}
-			return super.onOptionsItemSelected(item);
-		}
+	
 	
 	/**
 	/**

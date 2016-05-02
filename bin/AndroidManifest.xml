@@ -15,23 +15,31 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.ordersystem.LoginActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
+            >
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.ordersystem.MainActivity"></activity>
         <activity 
             android:name="com.example.ordersystem.RegisterActivity">
-            
+           
         </activity>
-        <activity android:name="com.example.ordersystem.MainActivity"></activity>
+        <activity 
+            android:name="com.example.ordersystem.SearchActivity"
+          ></activity>
+        
+        <activity android:name="com.example.ordersystem.ResetPassActivity"></activity>
+        
+        <activity android:name="com.example.ordersystem.MyCommentActivity"></activity>
+        <activity android:name="com.example.ordersystem.MyOrderActivity"></activity>
+        
         <!-- 实时通信模块、推送 -->
         <service android:name="com.avos.avoscloud.PushService"/>
         <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
