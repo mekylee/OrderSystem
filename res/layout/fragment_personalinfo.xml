@@ -27,16 +27,6 @@
             android:background="#C4C4C4" />
     </RelativeLayout>
 
-    <ImageButton
-        android:id="@+id/image1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/ly_top_bar"
-        android:layout_marginLeft="130dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/user_image" />
-
     <RelativeLayout
         android:id="@+id/account_layout"
         android:layout_width="match_parent"
@@ -132,18 +122,34 @@
             android:layout_width="20dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="22dp"
+          
             android:layout_marginTop="12dp"
             android:background="@drawable/right_arrow" />
+
     </RelativeLayout>
+
+      <ImageButton
+          android:id="@+id/image1"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:layout_below="@+id/ly_top_bar"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="10dp"
+          android:background="@android:color/transparent"
+          android:src="@drawable/user_image" />
+
       <Button
-        android:id="@+id/logout_btn"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/modifypass_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/button_shape"
-        android:text="退出登录"
-        android:textColor="@color/white" />
+          android:id="@+id/logout_btn"
+          android:layout_width="250dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/modifypass_layout"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="40dp"
+          android:background="@drawable/button_shape"
+          android:text="退出登录"
+          android:textColor="@color/white" />
+
+      
+
 </RelativeLayout>

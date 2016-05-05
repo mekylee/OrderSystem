@@ -1,4 +1,4 @@
-package com.example.ordersystem;
+package com.example.ordersystem.activity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,6 +12,8 @@ import com.avos.avoscloud.SignUpCallback;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,12 +22,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ordersystem.R;
+import com.example.ordersystem.activity.LoginActivity;
+import com.example.ordersystem.broadcast.NetworkReceiver;
 import com.example.ordersystem.customview.CleanableEditText;
 import com.example.ordersystem.utils.*;
 public class RegisterActivity extends Activity{
 	private Button reg_btn,back_btn;
 	private CleanableEditText  email_text,password_text,confirm_passw_text;
 	util  util=new util();
+	private NetworkReceiver networkReceiver ;
      @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
@@ -34,7 +40,21 @@ public class RegisterActivity extends Activity{
     	setContentView(R.layout.acitivity_register);
     	initialView();
      }
-     
+     @Override
+ 	protected void onResume() {
+ 		// TODO Auto-generated method stub
+ 		super.onResume();
+ 		IntentFilter filter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+ 		networkReceiver =new NetworkReceiver();
+ 		registerReceiver(networkReceiver, filter);
+ 	}
+ 	
+      @Override
+     protected void onPause() {
+     	// TODO Auto-generated method stub
+     	super.onPause();
+     	unregisterReceiver(networkReceiver);  
+     }
      
      private void  initialView(){
     	 reg_btn=(Button)findViewById(R.id.reg_btn);

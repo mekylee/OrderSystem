@@ -1,6 +1,14 @@
-package com.example.ordersystem;
+package com.example.ordersystem.activity;
+
+import com.example.ordersystem.R;
+import com.example.ordersystem.R.id;
+import com.example.ordersystem.R.layout;
+import com.example.ordersystem.R.menu;
+import com.example.ordersystem.broadcast.NetworkReceiver;
 
 import android.app.Activity;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -11,6 +19,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class SearchActivity extends Activity {
+	private NetworkReceiver networkReceiver;
+	
    @Override
 protected void onCreate(Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
@@ -27,4 +37,19 @@ protected void onCreate(Bundle savedInstanceState) {
 	    //Todo:≈‰÷√SearchViewµƒµƒ Ù–‘
 	   return super.onCreateOptionsMenu(menu);
 	}
+   @Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		IntentFilter filter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+		networkReceiver =new NetworkReceiver();
+		registerReceiver(networkReceiver, filter);
+	}
+	
+    @Override
+   protected void onPause() {
+   	// TODO Auto-generated method stub
+   	super.onPause();
+   	unregisterReceiver(networkReceiver);  
+   }
 }

@@ -1,7 +1,13 @@
-package com.example.ordersystem;
+package com.example.ordersystem.fragment;
 
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogUtil.log;
+import com.example.ordersystem.R;
+import com.example.ordersystem.R.id;
+import com.example.ordersystem.R.layout;
+import com.example.ordersystem.activity.MyCommentActivity;
+import com.example.ordersystem.activity.MyOrderActivity;
+import com.example.ordersystem.activity.ResetPassActivity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -20,11 +26,18 @@ import android.widget.TextView;
 public class PersonalInfoFragment extends Fragment implements OnClickListener{
    private RelativeLayout myorder_layout,mycomemnt_layout,modifypass_layout;
    private Button logout_btn,modifypass_btn,mycomment_btn,myorder_btn;
+   private View view;
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
-	   View view =inflater.inflate(R.layout.fragment_personalinfo, container, true);
+	   if(view == null){
+	       view =inflater.inflate(R.layout.fragment_personalinfo,null);
 	   initialView(view);
+	   }
+	   ViewGroup parent = (ViewGroup) view.getParent();
+		if(parent != null){
+			parent.removeView(view);
+		}
 	   return view;
 	   
 	

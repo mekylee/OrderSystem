@@ -1,5 +1,9 @@
-package com.example.ordersystem;
+package com.example.ordersystem.fragment;
 import com.avos.avoscloud.LogUtil.log;
+import com.example.ordersystem.R;
+import com.example.ordersystem.R.id;
+import com.example.ordersystem.R.layout;
+import com.example.ordersystem.activity.MyOrderActivity;
 import com.example.ordersystem.entity.Order;
 
 import android.content.Intent;
@@ -17,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ShoppingCartFragment extends Fragment {
+	private View view;
 	private Button commit_btn;
 	private RadioButton edit_btn;
 	private TextView total_price_tv;
@@ -28,8 +33,14 @@ public class ShoppingCartFragment extends Fragment {
 	    * root:加载layout的父ViewGroup
 	    * attachToRoot:false，不返回父ViewGroup
 	    */
-	   View view=inflater.inflate(R.layout.fragment_shoppingcart, container, false);
-	   intialView(view);
+	   if(view==null){
+	      view=inflater.inflate(R.layout.fragment_shoppingcart,null);
+	      intialView(view);
+	   }
+	   ViewGroup parent = (ViewGroup) view.getParent();
+		if(parent != null){
+			parent.removeView(view);
+		}
 		return view;
 	}
       

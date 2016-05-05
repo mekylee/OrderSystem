@@ -1,7 +1,9 @@
-package com.example.ordersystem;
+package com.example.ordersystem.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,11 +17,16 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogUtil.log;
 import com.avos.avoscloud.RequestPasswordResetCallback;
+import com.example.ordersystem.R;
+import com.example.ordersystem.R.id;
+import com.example.ordersystem.R.layout;
+import com.example.ordersystem.broadcast.NetworkReceiver;
 import com.example.ordersystem.customview.CleanableEditText;
 import com.example.ordersystem.utils.util;;
 public class ResetPassActivity extends Activity implements OnClickListener{
 	private Button reset_btn,back_btn;
 	private CleanableEditText email;
+	private NetworkReceiver networkReceiver;
 	util util=new util();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +79,22 @@ public class ResetPassActivity extends Activity implements OnClickListener{
 			});
 		}
 	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		IntentFilter filter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+		networkReceiver =new NetworkReceiver();
+		registerReceiver(networkReceiver, filter);
+	}
+	
+     @Override
+    protected void onPause() {
+    	// TODO Auto-generated method stub
+    	super.onPause();
+    	unregisterReceiver(networkReceiver);  
+    }
 	
 
 }

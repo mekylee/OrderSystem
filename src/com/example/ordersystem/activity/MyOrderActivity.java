@@ -1,4 +1,6 @@
-package com.example.ordersystem;
+package com.example.ordersystem.activity;
+
+import com.example.ordersystem.R;
 
 import android.app.Activity;
 import android.os.Bundle;

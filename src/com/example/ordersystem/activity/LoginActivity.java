@@ -1,16 +1,23 @@
-package com.example.ordersystem;
+package com.example.ordersystem.activity;
 
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
+import com.example.ordersystem.R;
+import com.example.ordersystem.activity.RegisterActivity;
+import com.example.ordersystem.broadcast.NetworkReceiver;
+import com.example.ordersystem.R.id;
+import com.example.ordersystem.R.layout;
 import com.example.ordersystem.constants.LeanCloudConf;
 import com.example.ordersystem.customview.CleanableEditText;
 import com.example.ordersystem.customview.CleanableEditText.TextWatcherCallBack;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,7 +33,8 @@ import com.example.ordersystem.utils.util;;
 public class LoginActivity extends Activity implements TextWatcherCallBack,OnClickListener{
     private Button login_btn,register_btn,resetpassword_btn;
     private CleanableEditText account_editext, password_editext;
-   util util=new util();
+    private util util=new util();
+    private  NetworkReceiver networkReceiver; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,10 +42,26 @@ public class LoginActivity extends Activity implements TextWatcherCallBack,OnCli
 		setContentView(R.layout.activity_login);
 		initialView();
 		AVOSCloud.initialize(this,LeanCloudConf.APP_ID, LeanCloudConf.APP_Key);
-	    //跟踪统计应用 的打开情况
-		//AVAnalytics.trackAppOpened(getIntent());
-	    
+	  
 	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		IntentFilter filter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+		networkReceiver =new NetworkReceiver();
+		registerReceiver(networkReceiver, filter);
+	}
+	
+     @Override
+    protected void onPause() {
+    	// TODO Auto-generated method stub
+    	super.onPause();
+    	unregisterReceiver(networkReceiver);  
+    }
+	
+	
 	
 	private void initialView(){
 		login_btn=(Button)findViewById(R.id.login_btn);
