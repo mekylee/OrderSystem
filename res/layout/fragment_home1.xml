@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout
+        android:id="@+id/myorder_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/hulanse" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray" />
+
+        
+        <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:text="餐厅"
+            android:textColor="@color/white"
+            android:textSize="18sp" >
+        </Button>
+
+         <SearchView
+             android:id="@+id/search_view"
+             android:layout_width="190dp"
+             android:layout_height="40dp"
+             android:layout_marginLeft="50dp"
+             android:layout_marginTop="5dp"
+             android:background="@color/white"
+             android:iconifiedByDefault="true"
+             android:imeOptions="actionSearch"
+             android:inputType="textCapWords"
+             android:queryHint="请输入关键字" 
+            
+             >
+
+         </SearchView>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/home_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      
+        android:layout_below="@+id/myorder_top_bar" >
+
+    </ListView>
+
+</RelativeLayout>

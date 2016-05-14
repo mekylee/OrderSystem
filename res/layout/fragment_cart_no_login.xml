@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+     android:background="#D3D3D3">
+     <RelativeLayout
+        android:id="@+id/ly_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/txt_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="购物车"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#C4C4C4" />
+    </RelativeLayout>
+
+     <ImageView
+         android:id="@+id/imageView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/ly_top_bar"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="100dp"
+         android:src="@drawable/profile_img" />
+
+     <TextView
+         android:id="@+id/register_tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/login_tv"
+         android:layout_alignBottom="@+id/login_tv"
+         android:layout_toRightOf="@+id/login_tv"
+         android:text="注册"
+         android:textSize="20sp" />
+
+     <TextView
+         android:id="@+id/login_tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/imageView1"
+         android:layout_below="@+id/imageView1"
+         android:layout_marginRight="10dp"
+         android:layout_marginTop="32dp"
+         android:text="登录 /"
+         android:textSize="20sp" />
+
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout
+        android:id="@+id/middle_layouts"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/myorder_top_bar"
+        android:background="@color/white"
+  
+      >
+    
+        
+     <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray" />
+
+     <CheckBox
+         android:id="@+id/checkBox"
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:layout_alignParentLeft="true"
+         android:layout_centerVertical="true"
+         android:layout_marginLeft="15dp"
+         android:text="全选" />
+
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="1px"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:background="@color/gray" />
+
+     <RelativeLayout
+         android:id="@+id/top_layout"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/checkBox"
+         android:layout_alignBottom="@+id/checkBox"
+         android:layout_alignParentRight="true" >
+
+         <TextView
+             android:id="@+id/textView4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignBaseline="@+id/textView3"
+             android:layout_alignBottom="@+id/textView3"
+             android:layout_alignParentRight="true"
+             android:layout_marginRight="8dp"
+             android:text="总价" />
+
+         <TextView
+             android:id="@+id/textView3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentTop="true"
+             android:layout_marginRight="25dp"
+             android:layout_toLeftOf="@+id/textView4"
+             android:text="数量" />
+
+         <TextView
+             android:id="@+id/textView1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentTop="true"
+             android:layout_marginRight="36dp"
+             android:layout_toLeftOf="@+id/textView2"
+             android:text="菜品" />
+
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentTop="true"
+             android:layout_marginRight="32dp"
+             android:layout_toLeftOf="@+id/textView3"
+             android:text="单价" />
+
+     </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

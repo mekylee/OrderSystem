@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+   
+    <RelativeLayout
+        android:id="@+id/myoder_listview_item_layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:padding="12dp">
+        <TextView
+        android:id="@+id/status_order_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       
+        android:text="已完成" />
+
+    <TextView
+        android:id="@+id/number_of_dished_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+    
+        android:text="共2件商品" />
+    </RelativeLayout>
+    <!--
+    <View 
+        android:id="@+id/view1"
+        android:layout_below="@id/myoder_listview_item_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/red" />  -->
+    <!--  
+      <View 
+        android:id="@+id/view2"
+        android:layout_below="@id/myoder_listview_item_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/red" />
+      -->
+
+      <RelativeLayout
+          android:id="@+id/myoder_listview_item_layout2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/myoder_listview_item_layout1"
+          android:paddingBottom="10dp"
+          android:paddingTop="10dp" >
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:layout_marginLeft="80dp"
+              android:layout_toRightOf="@+id/myorder_img"
+              android:orientation="vertical" >
+
+              <TextView
+                  android:id="@+id/dish_name_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:paddingBottom="10dp"
+                  android:text="番茄炒鸡蛋" />
+
+              <TextView
+                  android:id="@+id/dish_price_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:paddingTop="15dp"
+                  android:text="￥20" />
+          </LinearLayout>
+
+          <ImageView
+              android:id="@+id/myorder_img"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentTop="true"
+              android:layout_marginLeft="15dp"
+              android:src="@drawable/app_icon" />
+      </RelativeLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/myoder_listview_item_layout2"
+          android:padding="10dp" >
+
+          <TextView
+              android:id="@+id/total_price_tv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="总价 : ￥100" />
+      </LinearLayout>
+ 
+</RelativeLayout>
