@@ -119,7 +119,7 @@ public class RegisterActivity extends Activity{
 					//失败的原因
 					Toast.makeText(RegisterActivity.this, arg0.toString(), Toast.LENGTH_SHORT).show();
 					log.e("tag",arg0.toString());
-					//如果注册不成功，请检查一下返回的错误对象。最有可能的情况是，用户名或电子邮件已经被另一个用户注册，此时可以提示用户尝试用不同的用户名进行注册，也可以要求用户用 Email 做为用户名注册。
+					
 				}
 			}
 		});

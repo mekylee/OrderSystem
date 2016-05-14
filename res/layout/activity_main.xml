@@ -15,7 +15,7 @@
     <RadioGroup
         android:id="@+id/radioGroup1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@color/white"
         android:checkedButton="@+id/home"
         android:gravity="center_vertical"
@@ -28,7 +28,7 @@
             android:layout_weight="1"
 
             android:button="@null"
-            android:paddingLeft="0dp"
+            android:padding="7dp"
             android:drawableTop="@drawable/home_img"
            
             android:gravity="center"
@@ -40,8 +40,8 @@
             android:id="@+id/cart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
-           
+            android:layout_weight="1"
+            android:padding="7dp"
             android:button="@null"
             android:drawableTop="@drawable/cart_img"
             android:gravity="center_horizontal"
@@ -55,7 +55,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/profile_img"
+            android:padding="7dp"
+            android:drawableTop="@drawable/profile_tab"
             android:gravity="center_horizontal"
             android:text="@string/mine"
             android:textColor="@drawable/bottomtab_text"

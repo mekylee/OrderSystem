@@ -1,37 +1,52 @@
 package com.example.ordersystem.fragment;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogUtil.log;
 import com.example.ordersystem.R;
 import com.example.ordersystem.R.id;
 import com.example.ordersystem.R.layout;
 import com.example.ordersystem.activity.MyOrderActivity;
-import com.example.ordersystem.entity.Order;
+
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ShoppingCartFragment extends Fragment {
 	private View view;
 	private Button commit_btn;
-	private RadioButton edit_btn;
+//	private CheckBox edit_btn;
 	private TextView total_price_tv;
+	private ListView cart_listview;
+	private FragmentManager manager;
+	private FragmentTransaction tran;
    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-	//layoutÎÄ¼þ×ª»»³ÉView¶ÔÏó
-	   /*resource:FragmentÐèÒª¼ÓÔØµÄ×Ô¼ºµÄ²¼¾ÖÎÄ¼þ
-	    * root:¼ÓÔØlayoutµÄ¸¸ViewGroup
-	    * attachToRoot:false£¬²»·µ»Ø¸¸ViewGroup
+	//layoutï¿½Ä¼ï¿½×ªï¿½ï¿½ï¿½ï¿½Viewï¿½ï¿½ï¿½ï¿½
+	   /*resource:Fragmentï¿½ï¿½Òªï¿½ï¿½ï¿½Øµï¿½ï¿½Ô¼ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
+	    * root:ï¿½ï¿½ï¿½ï¿½layoutï¿½Ä¸ï¿½ViewGroup
+	    * attachToRoot:falseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ViewGroup
 	    */
 	   if(view==null){
 	      view=inflater.inflate(R.layout.fragment_shoppingcart,null);
@@ -46,10 +61,12 @@ public class ShoppingCartFragment extends Fragment {
       
    
    public void intialView(View view){
-	   edit_btn=(RadioButton)view.findViewById(R.id.radioButton1);
+//	   edit_btn=(CheckBox)view.findViewById(R.id.checkBox);
 	   commit_btn=(Button)view.findViewById(R.id.commit_btn);
 	   total_price_tv=(TextView)view.findViewById(R.id.total_price_tv);
-	   edit_btn.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+	   manager=getActivity().getSupportFragmentManager();
+	   tran=manager.beginTransaction();
+	  /* edit_btn.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 		
 		@Override
 		public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
@@ -58,18 +75,44 @@ public class ShoppingCartFragment extends Fragment {
 //		ackgound	int color=b
 //			commit_btn.setBackgroundColor(#1E90FF);
 		}
-	});
+	});*/
 	   commit_btn.setOnClickListener(new OnClickListener() {
 		
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(getActivity(),MyOrderActivity.class);
-			startActivity(intent);
-			Toast.makeText(getActivity(), "ÄúÒÑÌá½»³É¹¦£¬ÇëÄÍÐÄµÈ´ýÈ·ÈÏ", Toast.LENGTH_SHORT).show();
-		
-		}
-	});
+			/**
+			 * ï¿½Ð¶ï¿½ï¿½Ã»ï¿½ï¿½Äµï¿½Â¼×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æ£¬
+			 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Î´ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ò³ï¿½ï¿½
+			 */
+	            // ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
+	        	Intent intent=new Intent(getActivity(),MyOrderActivity.class);
+				startActivity(intent);
+				Toast.makeText(getActivity(), "ï¿½ï¿½ï¿½ï¿½ï¿½á½»ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄµÈ´ï¿½È·ï¿½ï¿½", Toast.LENGTH_SHORT).show();
+	       }
+	   });
+	   
+	   cart_listview=(ListView)view.findViewById(R.id.cart_listview);
+	   cart_listview.setAdapter(new SimpleAdapter(getContext(), getData(), R.layout.cart_listview_item, 
+                                  new String[]{"dish_img","dish_price","numer_of_dishes","add_btn","reduce_btn","detele_img"} ,
+                                  new int []{R.id.dish_img,R.id.price_tv,R.id.number_of_dished_tv,R.id.add_btn,R.id.reduce_btn,R.id.delete_img}));
+        }
+   
+   public List<Map<String,Object>> getData(){
+	   List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();
+	   for(int i=0;i<10;i++){
+		   Map<String,Object> map=new HashMap<String, Object>();
+		  
+		   map.put("dish_img",R.drawable.app_icon);
+		   map.put("dish_price", "ï¿½ï¿½30");
+		   map.put("dish_name", "ï¿½Ç´ï¿½ï¿½Å¹ï¿½");
+		   map.put("numer_of_dishes","3");
+		   map.put("add_btn", "+");
+		   map.put("reduce_btn","-");
+		   map.put("detele_img", R.drawable.delete);
+		   data.add(map);
+	   }
+	   return data;
    }
 
 

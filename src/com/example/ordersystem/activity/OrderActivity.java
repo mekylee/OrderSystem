@@ -123,4 +123,6 @@ public class OrderActivity extends FragmentActivity {
          lp.width = screen_width /2;  
          tab_line.setLayoutParams(lp);  
      }  
+     
+     
 }

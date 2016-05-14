@@ -5,6 +5,7 @@ import com.example.ordersystem.R;
 import com.example.ordersystem.broadcast.NetworkReceiver;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -31,7 +32,11 @@ public class Actvitity_No_NetWork extends Activity {
 				// TODO Auto-generated method stub
 			    Log.i("tag","刷新重试");
 			    Toast.makeText(Actvitity_No_NetWork.this, "刷新页面", Toast.LENGTH_SHORT).show();
-			    
+			    Intent i=new Intent();
+			    ComponentName componentName=new ComponentName("com.android.settings", "com.android.settings.WirelessSettings");
+			    i.setComponent(componentName);
+			    i.setAction("android.intent.anction.VIEW");
+			    startActivity(i);
 			    /*
 			     * Todo：如何实现点击刷新按钮，回到之前的Actvty
 			     * 解决方案1：点击按钮，读取缓存

@@ -41,7 +41,6 @@ public class LoginActivity extends Activity implements TextWatcherCallBack,OnCli
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
 		initialView();
-		AVOSCloud.initialize(this,LeanCloudConf.APP_ID, LeanCloudConf.APP_Key);
 	  
 	}
 	

@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-      android:background="#EDEDED"
+     
     >
-   
-    <RelativeLayout
+      
+      <RelativeLayout
         android:id="@+id/myorder_top_bar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -14,21 +14,20 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
       
             android:background="@color/gray" />
 
         <TextView
             android:id="@+id/txt_topbar"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="14dp"
-            android:gravity="left|center_vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="购物车"
             android:textColor="@color/black"
-            android:textSize="20sp" />
-
+            android:textSize="18sp" />
+       <!--  
         <Button
             android:id="@+id/edit_btn"
             android:layout_width="70dp"
@@ -40,89 +39,26 @@
             android:text="编辑全部"
             android:textColor="@color/gray"
             android:textSize="16sp" />
-
+         -->
     </RelativeLayout>
+
+  
 
     <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="35dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/myorder_top_bar"
-        android:background="@color/white"
-      >
-    
-        
-     <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_alignParentBottom="true"
-            android:background="@color/gray" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cart_bottom_bar"
+        android:layout_below="@id/myorder_top_bar" >
 
-     <RadioButton
-         android:id="@+id/radioButton1"
-         android:layout_width="wrap_content"
-         android:layout_height="match_parent"
-         android:layout_alignParentLeft="true"
-         android:layout_centerVertical="true"
-         android:layout_marginLeft="15dp"
-         android:text="全选" />
-
-     <RelativeLayout
-         android:id="@+id/top_layout"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content" 
-         android:layout_alignBaseline="@+id/radioButton1"
-         android:layout_toRightOf="@+id/radioButton1"
-         android:layout_marginLeft="15dp"  
-           >
-
-     <TextView
-         android:id="@+id/textView4"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignBaseline="@+id/textView3"
-         android:layout_alignBottom="@+id/textView3"
-         android:layout_alignParentRight="true"
-          android:layout_marginRight="8dp"
-         android:text="总价" />
-
-     <TextView
-         android:id="@+id/textView1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentTop="true"
-         android:layout_marginLeft="20dp"
-         android:text="菜品" />
-
-     <TextView
-         android:id="@+id/textView2"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentTop="true"
-         android:layout_marginLeft="35dp"
-         android:layout_toRightOf="@+id/textView1"
-         android:text="单价" />
-
-     <TextView
-         android:id="@+id/textView3"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentTop="true"
-         android:layout_marginLeft="25dp"
-         android:layout_toRightOf="@+id/textView2"
-         android:text="数量" />
-
-     </RelativeLayout>
-
-     <View
+     <ListView
+         android:id="@+id/cart_listview"
          android:layout_width="match_parent"
-         android:layout_height="1px"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentTop="true"
-         android:background="@color/gray" />
+         android:layout_height="match_parent" >
+         
+     </ListView>
+         
 
-    </RelativeLayout>
+</RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/cart_bottom_bar"
@@ -147,7 +83,7 @@
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:background="#B8B8B8"
+            android:background="@color/hulanse"
             android:text="提交"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -164,5 +100,10 @@
             android:textSize="20sp" />
 
     </RelativeLayout>
-
+       <FrameLayout
+         android:id="@+id/cart_main_content"
+         android:layout_width="fill_parent"
+         android:layout_height="0dp"
+         android:background="#e9edee"     
+         android:layout_weight="1" />
 </RelativeLayout>

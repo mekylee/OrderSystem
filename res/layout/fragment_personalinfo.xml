@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D3D3D3"
-    android:orientation="vertical" >
+    >
 
     <RelativeLayout
         android:id="@+id/ly_top_bar"
@@ -27,110 +27,8 @@
             android:background="#C4C4C4" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/account_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/image1"
-        android:layout_marginTop="15dp" 
-        android:background="@color/white">
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="账       号" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/myorder_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/account_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" 
-        android:background="@color/white">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="我的订单" />
-
-        <Button
-            android:id="@+id/myorder_btn"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/right_arrow" />
-    </RelativeLayout>
-    
-    <RelativeLayout
-        android:id="@+id/mycomment_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/myorder_layout"
-        android:layout_marginTop="15dp"
-        android:background="@color/white" >
-
-        <TextView
-            android:id="@+id/mycomment_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="我的评价" />
-
-        <Button
-            android:id="@+id/mycomment_btn"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/right_arrow" />
-    </RelativeLayout>
-  
-
-    <RelativeLayout
-        android:id="@+id/modifypass_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/mycomment_layout"
-        android:layout_marginTop="15dp"
-        android:background="@color/white" >
-
-        <TextView
-            android:id="@+id/modifypass_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="修改密码" />
-
-        <Button
-            android:id="@+id/modifypass_btn"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="22dp"
-          
-            android:layout_marginTop="12dp"
-            android:background="@drawable/right_arrow" />
-
-    </RelativeLayout>
-
       <ImageButton
-          android:id="@+id/image1"
+          android:id="@+id/user_image"
           android:layout_width="50dp"
           android:layout_height="50dp"
           android:layout_below="@+id/ly_top_bar"
@@ -139,17 +37,115 @@
           android:background="@android:color/transparent"
           android:src="@drawable/user_image" />
 
+      <RelativeLayout
+          android:id="@+id/account_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/user_image"
+          android:layout_marginTop="15dp"
+          android:background="@color/white" >
+
+          <TextView
+              android:id="@+id/textView1"
+              android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="13dp"
+              android:text="账       号" />
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/myorder_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/account_layout"
+          android:layout_marginTop="15dp"
+          android:background="@color/white" >
+
+          <TextView
+              android:id="@+id/textView3"
+              android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="13dp"
+              android:text="我的订单" />
+
+          <Button
+              android:id="@+id/myorder_btn"
+              android:layout_width="20dp"
+              android:layout_height="30dp"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="20dp"
+              android:layout_marginTop="8dp"
+              android:background="@drawable/right_arrow" />
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/mycomment_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/myorder_layout"
+          android:layout_marginTop="15dp"
+          android:background="@color/white" >
+
+          <TextView
+              android:id="@+id/mycomment_tv"
+              android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="13dp"
+              android:text="我的评价" />
+
+          <Button
+              android:id="@+id/mycomment_btn"
+              android:layout_width="20dp"
+              android:layout_height="30dp"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="20dp"
+              android:layout_marginTop="8dp"
+              android:background="@drawable/right_arrow" />
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/modifypass_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/mycomment_layout"
+          android:layout_marginTop="15dp"
+          android:background="@color/white" >
+
+          <TextView
+              android:id="@+id/modifypass_tv"
+              android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="13dp"
+              
+              android:text="修改密码" />
+
+          <Button
+              android:id="@+id/modifypass_btn"
+              android:layout_width="20dp"
+              android:layout_height="30dp"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="22dp"
+              android:layout_marginTop="8dp"
+              android:background="@drawable/right_arrow" />
+      </RelativeLayout>
+
       <Button
           android:id="@+id/logout_btn"
           android:layout_width="250dp"
           android:layout_height="wrap_content"
           android:layout_below="@+id/modifypass_layout"
           android:layout_centerHorizontal="true"
-          android:layout_marginTop="40dp"
+          android:layout_marginTop="35dp"
           android:background="@drawable/button_shape"
           android:text="退出登录"
           android:textColor="@color/white" />
-
-      
 
 </RelativeLayout>

@@ -1,15 +1,12 @@
 package com.example.ordersystem.fragment;
 
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.LogUtil.log;
 import com.example.ordersystem.R;
-import com.example.ordersystem.R.id;
-import com.example.ordersystem.R.layout;
+import com.example.ordersystem.activity.MainActivity;
 import com.example.ordersystem.activity.MyCommentActivity;
 import com.example.ordersystem.activity.MyOrderActivity;
 import com.example.ordersystem.activity.ResetPassActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,22 +14,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class PersonalInfoFragment extends Fragment implements OnClickListener{
    private RelativeLayout myorder_layout,mycomemnt_layout,modifypass_layout;
    private Button logout_btn,modifypass_btn,mycomment_btn,myorder_btn;
    private View view;
+   private ImageView user_img;
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
 	   if(view == null){
-	       view =inflater.inflate(R.layout.fragment_personalinfo,null);
+	       view =inflater.inflate(R.layout.fragment_personalinfo,container,false);
 	   initialView(view);
+	   Log.i("tag", "初始化完成");
 	   }
 	   ViewGroup parent = (ViewGroup) view.getParent();
 		if(parent != null){
@@ -44,6 +42,7 @@ public class PersonalInfoFragment extends Fragment implements OnClickListener{
     }
    
    public void initialView(View view){
+	   Log.i("tag","开始初始化视图");
 	   myorder_layout=(RelativeLayout)view.findViewById(R.id.myorder_layout);
 	   mycomemnt_layout=(RelativeLayout)view.findViewById(R.id.mycomment_layout);
 	   modifypass_layout=(RelativeLayout)view.findViewById(R.id.modifypass_layout);
@@ -51,6 +50,7 @@ public class PersonalInfoFragment extends Fragment implements OnClickListener{
 	   modifypass_btn=(Button)view.findViewById(R.id.modifypass_btn);
 	   mycomment_btn=(Button)view.findViewById(R.id.mycomment_btn);
 	   myorder_btn=(Button)view.findViewById(R.id.myorder_btn);
+	   user_img=(ImageView)view.findViewById(R.id.user_image);
 	   mycomemnt_layout.setOnClickListener(this);
 	   mycomment_btn.setOnClickListener(this);
 	   modifypass_btn.setOnClickListener(this);
@@ -58,6 +58,7 @@ public class PersonalInfoFragment extends Fragment implements OnClickListener{
 	   logout_btn.setOnClickListener(this);
 	   myorder_btn.setOnClickListener(this);
 	   myorder_layout.setOnClickListener(this);
+	   user_img.setOnClickListener(this);
 	   
 	   
    }
@@ -81,9 +82,14 @@ public class PersonalInfoFragment extends Fragment implements OnClickListener{
 				break;
 			case R.id.logout_btn:
 				Log.i("tag","登出前，当前用户为"+AVUser.getCurrentUser().getEmail());
-				AVUser.logOut();//清除缓存对象
-				Log.i("tag","登出后，当前用户为"+AVUser.getCurrentUser().getEmail());
-				default:
+				Intent i=new Intent(getActivity(),MainActivity.class);
+				startActivity(i);
+				AVUser.getCurrentUser().logOut();//清除缓存对象
+			  
+			case R.id.user_image:
+				//Todo：修改头像
+				break;
+			default:
 					break;
 				
 		    

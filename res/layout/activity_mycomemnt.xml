@@ -5,13 +5,13 @@
     android:background="#EDEDED" >
 
     <RelativeLayout
-        android:id="@+id/myorder_top_bar"
+        android:id="@+id/mycomment_top_bar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/whitesmoke" >
+        android:background="@color/white" >
 
         <Button
-            android:id="@+id/back_btn"
+            android:id="@+id/mycomment_back_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
             android:text="我的评价"
             android:textColor="@color/black"
             android:textSize="18sp" />
-
+      <!--  
         <Button
             android:id="@+id/edit_btn"
             android:layout_width="40dp"
@@ -49,52 +49,14 @@
             android:textColor="#4F4F4F"
             android:textSize="15sp" >
         </Button>
+        -->
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/re1"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/myorder_top_bar"
-        android:layout_marginTop="10dp"
-        android:background="@color/white" >
-     
-        <RelativeLayout
-            android:id="@+id/re11"
+        <ListView
+            android:id="@+id/mycomment_listview"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" >
-          <Button 
-              android:id="@+id/comment_btn"
-              android:layout_width="30dp"
-              android:layout_height="20dp"
-              android:layout_alignParentBottom="true"
-              android:text="去评价"
-              />
-        </RelativeLayout>
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mycomment_top_bar" >
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="19dp"
-        android:background="@color/white" >
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_above="@+id/relativeLayout2"
-        android:layout_alignParentLeft="true"
-        android:background="@color/white" >
-    </RelativeLayout>
-
+    </ListView>
 </RelativeLayout>
