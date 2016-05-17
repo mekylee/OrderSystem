@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,11 +32,11 @@ public class Actvitity_No_NetWork extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 			    Log.i("tag","刷新重试");
-			    Toast.makeText(Actvitity_No_NetWork.this, "刷新页面", Toast.LENGTH_SHORT).show();
-			    Intent i=new Intent();
-			    ComponentName componentName=new ComponentName("com.android.settings", "com.android.settings.WirelessSettings");
+			    Toast.makeText(Actvitity_No_NetWork.this, "跳转到网络设置", Toast.LENGTH_SHORT).show();
+			    Intent i=new Intent(Settings.ACTION_WIFI_SETTINGS);
+			   /* ComponentName componentName=new ComponentName("com.android.settings", "com.android.settings.WirelessSettings");
 			    i.setComponent(componentName);
-			    i.setAction("android.intent.anction.VIEW");
+			    i.setAction("android.intent.anction.VIEW");*/
 			    startActivity(i);
 			    /*
 			     * Todo：如何实现点击刷新按钮，回到之前的Actvty

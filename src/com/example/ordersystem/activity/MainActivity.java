@@ -13,9 +13,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.SearchView;
 
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
@@ -45,18 +50,20 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
   private PersonalInfoFragment mine;
   private CartFragmentNoLogin fragment;
   private UserFragmentNoLogin  userFragmentNoLogin;
+
   @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
-		  cartFragment=new ShoppingCartFragment();
-		   home=new HomeFragment();
-		   mine=new PersonalInfoFragment();
-		   fragment=new CartFragmentNoLogin();
-		   userFragmentNoLogin=new UserFragmentNoLogin();
+		cartFragment = new ShoppingCartFragment();
+		home = new HomeFragment();
+		mine = new PersonalInfoFragment();
+		fragment = new CartFragmentNoLogin();
+		userFragmentNoLogin = new UserFragmentNoLogin();
 		initiaView();
+		
 	}
   
    private void initiaView(){
@@ -65,10 +72,9 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 	   tran.replace(R.id.main_content, new HomeFragment());
 //	   tran.replace(R.id.main_content, new FragmentHome1());
 	   tran.commit();
-	 
 	   radiogroup=(RadioGroup)findViewById(R.id.radioGroup1);
 	   radiogroup.setOnCheckedChangeListener(this);
-	 
+	  
    }
 
 	@Override
@@ -116,8 +122,6 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 	        }
 			
 			 break;
-			default:
-				break;
 		}
 		tran.commit();
 	}

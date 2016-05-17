@@ -3,28 +3,34 @@
     android:layout_width="match_parent"  
     android:layout_height="wrap_content"  
     android:orientation="vertical" >  
-     <LinearLayout
-        android:id="@+id/frame"
-        android:layout_width="match_parent"
+     <ImageButton
+        android:id="@+id/rest_logo_btn"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
+        android:orientation="horizontal" 
+        android:layout_marginTop="5dp"
+        android:src="@drawable/restlogo"
+        android:background="@android:color/transparent"/>
+       <!--  
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/home" />
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/restlogo" />
+         
         <TextView
             android:id="@+id/resta_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="欢迎来到XXX餐厅" 
-            android:paddingLeft="55dp"
-            android:paddingTop="45dp"
+            android:text="西贝欢迎您！" 
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="25dp"
+            
+            android:textSize="18dp"
           />
+          -->
        
-    </LinearLayout>
+    
     
     <LinearLayout  
         android:id="@+id/id_switch_tab_ll"  
@@ -60,6 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
+                android:iconifiedByDefault="true"
                 android:background="@android:color/transparent" >
             </SearchView>
  

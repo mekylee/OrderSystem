@@ -92,7 +92,7 @@
         android:layout_below="@+id/register_top_bar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/app_icon" />
 
     <Button
         android:id="@+id/reg_btn"

@@ -38,12 +38,20 @@
             android:name="com.example.ordersystem.activity.RegisterActivity">
            
         </activity>
+        <!-- 在某个activity内容，表示当前的actvity可以到处搜索框，制定要激活的SearchActivity -->
+        <meta-data 
+            android:name="android.app.default_searchable"
+            android:value="com.example.ordersystem.activity.SearchActivity"/>
+        <!-- 点击搜索要跳转到的activity -->
         <activity 
             android:name="com.example.ordersystem.activity.SearchActivity">
-             
-            
-            
-        </activity>
+           <intent-filter >
+               <action android:name="android.intent.action.SEARCH"/>
+           </intent-filter>
+           <meta-data android:name="android.app.searchable"
+               android:resource="@xml/searchable"/>
+         </activity>
+        <activity android:name="com.example.ordersystem.activity.RestaurantActivity"></activity>
         
         <activity android:name="com.example.ordersystem.activity.ResetPassActivity"></activity>
         

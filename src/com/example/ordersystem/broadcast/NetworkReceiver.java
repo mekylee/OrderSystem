@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class NetworkReceiver extends BroadcastReceiver {
     	   AlertDialog.Builder builder=new AlertDialog.Builder(context);
            builder.setIcon(R.drawable.wifi);
            builder.setTitle("网络提示");
-           builder.setMessage("是否设置网络？");
+           builder.setMessage("网络断开，请检查网络状态");
            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -49,11 +50,9 @@ public class NetworkReceiver extends BroadcastReceiver {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				 Intent intent=new Intent("/");
-				 ComponentName comp=new ComponentName("com.android.settings","com.android.settings.WirlessSettings");
-				 intent.setComponent(comp);
-				 intent.setAction("android.intent.action.VIEW");
-				 context.startActivity(intent);
+				 Intent i=new Intent(Settings.ACTION_WIFI_SETTINGS);
+				 context.startActivity(i);
+				
 			}
 		});
            builder.create().show();
@@ -62,15 +61,7 @@ public class NetworkReceiver extends BroadcastReceiver {
        else {
     	   Log.i("tag", "网络正常"+intent.toString());
        }
-     /*  if(activeNetInfo!=null){
-    	   Toast.makeText(context, "网络连接类型为:"+activeNetInfo.getTypeName(), Toast.LENGTH_SHORT).show();
-    	   
-       }
-       if(mobNetInfo!=null){
-    	   Toast.makeText(context, "网络连接类型为:"+mobNetInfo.getTypeName(), Toast.LENGTH_SHORT).show();
-
-       }
-		Log.i("tag","网络断开"+intent.toString())*/;
+     
 	}
 
 }
