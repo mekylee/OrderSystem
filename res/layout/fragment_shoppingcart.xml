@@ -16,7 +16,7 @@
             android:layout_height="1px"
             android:layout_alignParentBottom="true"
       
-            android:background="@color/gray" />
+         />
 
         <TextView
             android:id="@+id/txt_topbar"
@@ -53,12 +53,14 @@
      <ListView
          android:id="@+id/cart_listview"
          android:layout_width="match_parent"
-         android:layout_height="match_parent" >
+         android:layout_height="match_parent" 
+         android:background="@color/whitesmoke"
+         >
          
      </ListView>
          
 
-</RelativeLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/cart_bottom_bar"

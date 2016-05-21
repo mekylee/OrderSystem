@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D3D3D3"
+    android:background="@color/whitesmoke"
     >
 
     <RelativeLayout
@@ -53,6 +53,16 @@
               android:layout_marginLeft="20dp"
               android:layout_marginTop="13dp"
               android:text="账       号" />
+
+          <TextView
+              android:id="@+id/account_tv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignBaseline="@+id/textView1"
+              android:layout_alignBottom="@+id/textView1"
+              android:layout_centerHorizontal="true"
+              android:text="用户名" />
+
       </RelativeLayout>
 
       <RelativeLayout

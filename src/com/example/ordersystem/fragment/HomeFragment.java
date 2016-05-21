@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.ordersystem.R;
 import com.example.ordersystem.activity.RestaurantActivity;
 import com.example.ordersystem.adapter.FragmentAdapter;
+import com.example.ordersystem.entity.Cusine;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,9 +20,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeFragment extends Fragment{
 	private View view;
@@ -35,6 +38,11 @@ public class HomeFragment extends Fragment{
 	private int current_index ;   //当前tab停靠的页卡
 	private ImageButton rest_logo_ibtn;	
 	private SearchView searchView;
+	public HomeFragment newInstance(Bundle bundle){
+		HomeFragment fragment=new HomeFragment();
+		fragment.setArguments(bundle);
+		return fragment;
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -63,6 +71,7 @@ public class HomeFragment extends Fragment{
 		order_dishes_layout=(LinearLayout)view.findViewById(R.id.order_dished_layout);
 		rest_logo_ibtn = (ImageButton) view.findViewById(R.id.rest_logo_btn);
 		searchView = (SearchView)view.findViewById(R.id.search_view);
+		
 	}
 	
 	public void init(){
@@ -73,7 +82,9 @@ public class HomeFragment extends Fragment{
 		frag_list.add(order_dished_frag);
 		frag_list.add(comment_frag);
 		//创建fragment的适配器
-		fragment_adapter=new FragmentAdapter(getActivity().getSupportFragmentManager(), frag_list);  
+		fragment_adapter=new FragmentAdapter(getChildFragmentManager(), frag_list);  
+		//使用getActivity().supprotFragmentManager()会使得fragment内嵌套的fragment在切换过程中无法显示，应该使用getChildFragmentManager()
+//		fragment_adapter=new FragmentAdapter(getActivity().getSupportFragmentManager(), frag_list);//  
 		Log.i("tag","创建fragment适配器:"+fragment_adapter.toString());
 		viewPager.setAdapter(fragment_adapter);//将fragment与适配器绑定实现fragment的切换
 		Log.i("tag","绑定适配器");

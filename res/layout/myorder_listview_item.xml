@@ -55,7 +55,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_centerVertical="true"
-              android:layout_marginLeft="80dp"
+              android:layout_marginLeft="50dp"
               android:layout_toRightOf="@+id/myorder_img"
               android:orientation="vertical" >
 
@@ -84,10 +84,9 @@
               android:src="@drawable/app_icon" />
       </RelativeLayout>
 
-      <LinearLayout
+      <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
           android:layout_below="@+id/myoder_listview_item_layout2"
           android:padding="10dp" >
 
@@ -95,7 +94,25 @@
               android:id="@+id/total_price_tv"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_centerVertical="true"
+              android:layout_marginLeft="19dp"
               android:text="总价 : ￥100" />
-      </LinearLayout>
+
+          <Button
+              android:id="@+id/make_comment_btn"
+              style="?android:attr/buttonStyleSmall"
+              android:layout_width="wrap_content"
+              android:layout_height="30dp"
+     
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="18dp"
+              android:background="@drawable/btn_shape"
+              android:text="去评价"
+              android:focusable="false"
+              android:textColor="@color/white"
+              android:textSize="10dp" />
+
+      </RelativeLayout>
  
 </RelativeLayout>

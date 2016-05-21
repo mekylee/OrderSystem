@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     >
     <RelativeLayout
         android:id="@+id/register_top_bar"
@@ -20,7 +21,7 @@
         <View
             android:layout_width="match_parent" 
             android:layout_height="1px" 
-            android:background="@color/gray" 
+            android:background="@color/whitesmoke"
             android:layout_alignParentBottom="true"/>
 
         <TextView
@@ -36,16 +37,23 @@
 
         </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_top_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/app_icon" />
+
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_top_bar"
+        android:layout_below="@id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="57dp" 
-        android:focusable="true" 
-        android:focusableInTouchMode="true"
-        >
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
 
         <com.example.ordersystem.customview.CleanableEditText
             android:id="@+id/editText2"
@@ -53,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/editText1"
             android:layout_below="@+id/editText1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="请输入密码"
             android:inputType="textPassword" />
@@ -78,21 +86,8 @@
             android:layout_marginTop="29dp"
             android:ems="10"
             android:hint="请输入邮箱地址"
-            android:inputType="textEmailAddress" >
-
-      
-        </com.example.ordersystem.customview.CleanableEditText>
-
+            android:inputType="textEmailAddress" />
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register_top_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/app_icon" />
 
     <Button
         android:id="@+id/reg_btn"
@@ -100,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/relativeLayout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/btn_shape"
         android:text="@string/register"
         android:textColor="@color/whitesmoke" />

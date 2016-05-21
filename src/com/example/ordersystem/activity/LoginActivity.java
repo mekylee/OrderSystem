@@ -31,7 +31,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.ordersystem.utils.util;;
 public class LoginActivity extends Activity implements TextWatcherCallBack,OnClickListener{
-    private Button login_btn,register_btn,resetpassword_btn;
+    private Button login_btn,register_btn,resetpassword_btn,back_btn;
     private CleanableEditText account_editext, password_editext;
     private util util=new util();
     private  NetworkReceiver networkReceiver; 
@@ -68,6 +68,8 @@ public class LoginActivity extends Activity implements TextWatcherCallBack,OnCli
 		resetpassword_btn=(Button)findViewById(R.id.resetpassword_btn);
 		account_editext=(CleanableEditText)findViewById(R.id.edit_account);
 		password_editext=(CleanableEditText)findViewById(R.id.edit_password);
+		back_btn=(Button)findViewById(R.id.back_btn);
+		back_btn.setOnClickListener(this);
 	    login_btn.setOnClickListener(this);
 	    register_btn.setOnClickListener(this);
 	    resetpassword_btn.setOnClickListener(this);
@@ -93,7 +95,8 @@ public class LoginActivity extends Activity implements TextWatcherCallBack,OnCli
 			startActivity(intent1);
 			Log.i("tag","Ìø×ªµ½×¢²áÒ³Ãæ");
 			break;
-			default:
+		case R.id.back_btn:
+			finish();
 				break;
 				
 			

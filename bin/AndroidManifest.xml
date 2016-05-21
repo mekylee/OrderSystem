@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
    
     <application
-        android:name="com.example.ordersystem.activity.MyApplication"
+        android:name="com.example.ordersystem.utils.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
@@ -51,6 +51,7 @@
            <meta-data android:name="android.app.searchable"
                android:resource="@xml/searchable"/>
          </activity>
+         <activity android:name="com.example.ordersystem.activity.AddCommentActivity"></activity>
         <activity android:name="com.example.ordersystem.activity.RestaurantActivity"></activity>
         
         <activity android:name="com.example.ordersystem.activity.ResetPassActivity"></activity>

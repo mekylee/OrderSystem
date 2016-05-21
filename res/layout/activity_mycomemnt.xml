@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDEDED" >
+    android:background="@color/whitesmoke" >
 
     <RelativeLayout
         android:id="@+id/mycomment_top_bar"
@@ -23,8 +23,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:background="#F0F0F0"
             android:layout_alignParentBottom="true"
-            android:background="@color/gray" />
+          />
 
         <TextView
             android:id="@+id/txt_topbar"
@@ -56,6 +57,7 @@
             android:id="@+id/mycomment_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_below="@+id/mycomment_top_bar" >
 
     </ListView>

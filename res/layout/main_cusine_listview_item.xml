@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/cusine_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
+            android:layout_width="100dp"
+            android:layout_height="100dp" 
             android:paddingLeft="10dp"
             android:src="@drawable/app_icon"/>
 
@@ -28,8 +28,9 @@
 
         <RelativeLayout
             android:id="@+id/layout1"
-            android:layout_width="wrap_content"
-            android:layout_height="68dp"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_alignBottom="@+id/cusine_image"
             android:layout_alignTop="@+id/main_cusine_rl"
             android:layout_marginLeft="19dp"
             android:layout_toRightOf="@+id/cusine_image" >
@@ -38,8 +39,10 @@
                 android:id="@+id/price_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
                 android:paddingTop="5dp"
-                android:text="￥30" />
+                android:text="￥" />
 
             <TextView
                 android:id="@+id/cusine_name_tv"
@@ -47,8 +50,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:paddingBottom="5dp"
-                android:text="红烧鱼" />
+                android:layout_marginBottom="15dp"
+                android:text="菜品" />
+
         </RelativeLayout>
 
         <ImageView
@@ -56,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="43dp"
+            android:layout_marginLeft="35dp"
             android:layout_toRightOf="@+id/layout1"
             android:src="@drawable/add_to_cart" />
 

@@ -18,12 +18,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class PersonalInfoFragment extends Fragment implements OnClickListener{
    private RelativeLayout myorder_layout,mycomemnt_layout,modifypass_layout;
    private Button logout_btn,modifypass_btn,mycomment_btn,myorder_btn;
    private View view;
    private ImageView user_img;
+   private TextView username_tv;
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
@@ -51,6 +53,7 @@ public class PersonalInfoFragment extends Fragment implements OnClickListener{
 	   mycomment_btn=(Button)view.findViewById(R.id.mycomment_btn);
 	   myorder_btn=(Button)view.findViewById(R.id.myorder_btn);
 	   user_img=(ImageView)view.findViewById(R.id.user_image);
+	   username_tv=(TextView)view.findViewById(R.id.account_tv);
 	   mycomemnt_layout.setOnClickListener(this);
 	   mycomment_btn.setOnClickListener(this);
 	   modifypass_btn.setOnClickListener(this);
@@ -59,6 +62,9 @@ public class PersonalInfoFragment extends Fragment implements OnClickListener{
 	   myorder_btn.setOnClickListener(this);
 	   myorder_layout.setOnClickListener(this);
 	   user_img.setOnClickListener(this);
+	   AVUser current_user=AVUser.getCurrentUser();
+	   String user_name=current_user.getUsername();
+	   username_tv.setText(user_name);
 	   
 	   
    }

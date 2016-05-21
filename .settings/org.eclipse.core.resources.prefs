@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/com/example/ordersystem/entity/Comment.java=UTF-8
+encoding//src/com/example/ordersystem/entity/Cusine.java=UTF-8
+encoding//src/com/example/ordersystem/entity/Menu.java=UTF-8
+encoding//src/com/example/ordersystem/entity/Order.java=UTF-8
+encoding//src/com/example/ordersystem/entity/Restaurant.java=UTF-8
+encoding//src/com/example/ordersystem/entity/User.java=UTF-8
+encoding//src/com/example/ordersystem/fragment/ShoppingCartFragment.java=UTF-8
+encoding//src/com/example/ordersystem/utils/AVService.java=UTF-8
+encoding//src/com/example/ordersystem/utils/ImageLoader.java=UTF-8
